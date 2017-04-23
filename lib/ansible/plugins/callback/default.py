@@ -29,6 +29,7 @@ __metaclass__ = type
 from ansible import constants as C
 from ansible.plugins.callback import CallbackBase
 from ansible.utils.color import colorize, hostcolor
+from ansible.config import config
 
 class CallbackModule(CallbackBase):
 
@@ -137,7 +138,7 @@ class CallbackModule(CallbackBase):
 
     def v2_playbook_on_task_start(self, task, is_conditional):
 
-        if self._play.strategy != 'free':
+        if self._play.strategy != 'free' and self._last_task_banner != task._uuid:
             self._print_task_banner(task)
 
     def _print_task_banner(self, task):

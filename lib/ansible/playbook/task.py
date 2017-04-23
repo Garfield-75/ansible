@@ -35,6 +35,7 @@ from ansible.playbook.conditional import Conditional
 from ansible.playbook.loop_control import LoopControl
 from ansible.playbook.role import Role
 from ansible.playbook.taggable import Taggable
+from ansible.inventory.host import Host
 
 
 try:
@@ -68,6 +69,7 @@ class Task(Base, Conditional, Taggable, Become):
     _args                 = FieldAttribute(isa='dict', default=dict())
     _action               = FieldAttribute(isa='string')
 
+    _host         	  = FieldAttribute(isa='class', class_type=Host, inherit=False)
     _async                = FieldAttribute(isa='int', default=0)
     _changed_when         = FieldAttribute(isa='list', default=[])
     _delay                = FieldAttribute(isa='int', default=5)
@@ -89,6 +91,8 @@ class Task(Base, Conditional, Taggable, Become):
 
         self._role   = role
         self._parent = None
+
+        self._host = None
 
         if task_include:
             self._parent = task_include

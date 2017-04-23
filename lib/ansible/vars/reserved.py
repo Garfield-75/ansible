@@ -30,6 +30,11 @@ except ImportError:
     from ansible.utils.display import Display
     display = Display()
 
+try:
+    from ansible.config import config
+except ImportError:
+    display.warning ('Error - no config object in reserved vars')
+
 def get_reserved_names(include_private=True):
     ''' this function returns the list of reserved names associated with play objects'''
 
@@ -71,6 +76,9 @@ def warn_if_reserved(myvars):
     reserved = get_reserved_names()
     for varname in myvars:
         if varname == 'vars':
+            continue # we add this one internally
+        if varname == 'task_start_per_host':
+	    config.callback_on_task_start_per_host = myvars[varname] == 'True'
             continue # we add this one internally
         if varname in reserved:
             display.warning('Found variable using reserved name: %s' % varname)

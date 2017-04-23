@@ -18,3 +18,10 @@
 # Make coding more python3-ish
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
+
+
+class Config(object):
+    def __init__(self):
+        self.callback_on_task_start_per_host = True
+
+config = Config()
