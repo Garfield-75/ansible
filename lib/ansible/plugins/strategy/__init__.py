@@ -115,7 +115,7 @@ class StrategyBase:
 
         # Backwards compat: self._display isn't really needed, just import the global display and use that.
         self._display           = display
-	self._callback_on_task_start_per_host = config.callback_on_task_start_per_host
+        self._callback_on_task_start_per_host = config.callback_on_task_start_per_host
 
         # internal counters
         self._pending_results   = 0

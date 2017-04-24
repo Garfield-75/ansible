@@ -69,7 +69,7 @@ class Task(Base, Conditional, Taggable, Become):
     _args                 = FieldAttribute(isa='dict', default=dict())
     _action               = FieldAttribute(isa='string')
 
-    _host         	  = FieldAttribute(isa='class', class_type=Host, inherit=False)
+    _host                 = FieldAttribute(isa='class', class_type=Host, inherit=False)
     _async                = FieldAttribute(isa='int', default=0)
     _changed_when         = FieldAttribute(isa='list', default=[])
     _delay                = FieldAttribute(isa='int', default=5)

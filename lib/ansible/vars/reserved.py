@@ -78,7 +78,7 @@ def warn_if_reserved(myvars):
         if varname == 'vars':
             continue # we add this one internally
         if varname == 'task_start_per_host':
-	    config.callback_on_task_start_per_host = myvars[varname] == 'True'
+            config.callback_on_task_start_per_host = myvars[varname] == 'True'
             continue # we add this one internally
         if varname in reserved:
             display.warning('Found variable using reserved name: %s' % varname)

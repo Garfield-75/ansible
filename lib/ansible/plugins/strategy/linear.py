@@ -268,7 +268,7 @@ class StrategyModule(StrategyBase):
                                 display.debug("templating failed for some reason")
                                 pass
                             display.debug("here goes the callback...")
-			    task._host = host if self._callback_on_task_start_per_host else None
+                            task._host = host if self._callback_on_task_start_per_host else None
                             self._tqm.send_callback('v2_playbook_on_task_start', task, is_conditional=False)
                             callback_sent = True
                             task.name = saved_name
